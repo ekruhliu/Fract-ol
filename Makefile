@@ -18,9 +18,9 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = fract.h
 
-SRCS = zoom.c mouse.c depth.c usage.c fractals.c fractals_part_1.c klavochka.c main.c
+SRCS = move.c pth.c magik.c zoom.c mouse.c depth.c usage.c fractals.c fractals_part_1.c klavochka.c main.c
 
-OBJ = zoom.o mouse.o depth.o usage.o fractals.o fractals_part_1.o klavochka.o main.o
+OBJ = move.o pth.o magik.o zoom.o mouse.o depth.o usage.o fractals.o fractals_part_1.o klavochka.o main.o
 
 all: $(NAME)
 

@@ -16,10 +16,11 @@
 # include "./libft/libft.h"
 # include <mlx.h>
 # include <stdio.h>
+# include <pthread.h>
 
-# define VISOTA 1100
-# define WIRINA 1100
-# define PIXELS 1210000
+# define VISOTA 1000
+# define WIRINA 1000
+# define PIXELS 1000000
 # define MAX_REAL
 # define MIN_REAL
 # define MAX_FALSE
@@ -86,5 +87,23 @@ void	depth_plus(t_all *all);
 void	depth_minus(t_all *all);
 void	make_complex_X_Y(t_all *all, int i);
 int		zoom(int key, int x, int y, t_all *all);
+void	magik(t_all *all);
+void	potoki(t_all *all);
+void	*depth_part_1(void *op);
+void	*depth_part_2(void *op);
+void	*depth_part_3(void *op);
+void	*depth_part_4(void *op);
+void	*lines_part_1(void *op);
+void	*lines_part_2(void *op);
+void	*lines_part_3(void *op);
+void	*lines_part_4(void *op);
+void	ft_color_fill(t_all *all, int color, int i);
+void	create_image(t_all *all);
+void	create_lines(t_all *all, int i);
+int		fractal_test(t_all *all, int i);
+// void	move_up(t_all *all);
+// void	move_down(t_all *all);
+// void	move_left(t_all *all);
+// void	move_right(t_all *all);
 
 #endif

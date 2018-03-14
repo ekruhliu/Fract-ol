@@ -23,5 +23,7 @@ int	fractals(t_all *all, int i)
 		result = fractal_julia(all, i);
 	if (all->w_t_f == 3)
 		result = fractal_burnship(all, i);
+	if (all->w_t_f == 4)
+		result = fractal_test(all, i);
 	return(result);
 }

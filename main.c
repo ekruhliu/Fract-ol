@@ -119,32 +119,6 @@ void		create_lines(t_all *all, int i)
 	}
 }
 
-void	magik(t_all *all)
-{
-	int i;
-
-	i = 0;
-	all->ret_depth = 0;
-	while (i < PIXELS)
-	{
-		all->ret_depth = fractals(all, i);
-		if (all->ret_depth < all->depth) 
-			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
-		else
-			ft_color_fill(all, 0, i);
-		i++;
-	}
-	i = 0;
-	create_image(all);
-	while (i < PIXELS)
-	{
-		create_lines(all, i);
-		i++;
-	}
-	mlx_put_image_to_window(all->mlx, all->win, all->img->image, 0, 0);
-	free(all->img);
-}
-
 void	cleaner(t_all *all)
 {
 	free(all->complex);
