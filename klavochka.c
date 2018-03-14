@@ -16,5 +16,7 @@ int		klavochka(int key, t_all *all)
 {
 	if (key == 53)
 		exit_x();
+	if (key == 69 || key == 78)
+		(key == 69 ? depth_plus(all) : depth_minus(all));
 	return (0);
 }

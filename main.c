@@ -25,10 +25,20 @@ void	open_window(t_all *all)
 
 void	make_complex_R_F(t_all *all)
 {
-	all->complex->max_real = 0.5;
-	all->complex->min_real = -2.0;
-	all->complex->max_false = 1.25;
-	all->complex->min_false = -1.25;
+	if (all->w_t_f == 1)
+	{
+		all->complex->max_real = 0.5;
+		all->complex->min_real = -2.0;
+		all->complex->max_false = 1.25;
+		all->complex->min_false = -1.25;
+	}
+	else
+	{
+		all->complex->max_real = 2;
+		all->complex->min_real = -2.0;
+		all->complex->max_false = 2;
+		all->complex->min_false = -2.0;
+	}
 }
 
 void	make_complex_X_Y(t_all *all, int i)
@@ -117,7 +127,7 @@ void	magik(t_all *all)
 	all->ret_depth = 0;
 	while (i < PIXELS)
 	{
-		all->ret_depth = fractal_mandelbrot(all, i);
+		all->ret_depth = fractals(all, i);
 		if (all->ret_depth < all->depth) 
 			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
 		else
@@ -143,17 +153,37 @@ void	cleaner(t_all *all)
 	free(all);
 }
 
+// int		ft_isnumber(char c)
+// {
+// 	if (c >= 49 && c <= 57)
+// 		return (1);
+// 	return (0);
+// }
+
+// void	read_SI(t_all *all)
+// {
+// 	char	*tmp;
+
+// 	while (get_next_line(STANDART_INPUT, &tmp) >= 0)
+// 	{
+// 		if (ft_isnumber(tmp) == 1)
+// 			continue;
+// 		all->w_t_f = ft_atoi(tmp);
+// 		free(tmp);	
+// 	}
+// }
+
 int	main(int argc, char **argv)
 {
 	t_all	*all;
 	int		i;
-	char	*help;
 
-	help = argv[1];
-	if (argc == 2)
+	if (argc >= 2)
 	{
 		i = 0;
 		all = malloc(sizeof(t_all));
+		//read_SI(all);
+		all->w_t_f = ft_atoi(argv[1]);
 		all->complex = malloc(sizeof(t_complex));
 		all->complex_2 = malloc(sizeof(t_complex_2) * PIXELS);
 		make_coordinate(all);
@@ -164,12 +194,15 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		all->depth = 50;
-		all->color = 0x0F0F0F;
+		all->color = 0x0FF0F0; //0xFFF0F0
 		open_window(all);
 		magik(all);
+		mlx_hook(all->win, 6, 0, mouse, all);
+		mlx_mouse_hook(all->win, zoom, all);
 		mlx_hook(all->win, 17, 1L << 17, exit_x, 0);
 		mlx_hook(all->win, 2, 5, klavochka, all);
 		mlx_loop(all->mlx);
-		
 	}
+	else
+		usage();
 }

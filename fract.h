@@ -15,6 +15,7 @@
 
 # include "./libft/libft.h"
 # include <mlx.h>
+# include <stdio.h>
 
 # define VISOTA 1100
 # define WIRINA 1100
@@ -25,13 +26,14 @@
 # define MIN_FALSE
 # define DATA_ADDR_1 all->img->image, &all->img->bits
 # define DATA_ADDR_2 &all->img->size_line, &all->img->end
+# define STANDART_INPUT 0
 
 typedef	struct	s_complex
 {
-	double			max_real;
-	double			min_real;
-	double			max_false;
-	double			min_false;
+	double		max_real;
+	double		min_real;
+	double		max_false;
+	double		min_false;
 }				t_complex;
 
 typedef	struct	s_complex_2
@@ -61,6 +63,11 @@ typedef	struct	s_all
 	int			depth;
 	int			color;
 	int 		ret_depth;
+	int			w_t_f;
+	double		true_julia;
+	double		false_julia;
+	double		complex_mouse_X;
+	double		complex_mouse_Y;
 	t_complex	*complex;
 	t_complex_2	*complex_2;
 	t_img		*img;
@@ -68,7 +75,16 @@ typedef	struct	s_all
 
 int		fractal_mandelbrot(t_all *all, int i);
 int		fractal_burnship(t_all *all, int i);
+int		fractal_julia(t_all *all, int i);
 int		klavochka(int key, t_all *all);
+int		fractals(t_all *all, int i);
+int		mouse(int x, int y, t_all *all);
 int		exit_x(void);
+void	magik(t_all *all);
+void	usage(void);
+void	depth_plus(t_all *all);
+void	depth_minus(t_all *all);
+void	make_complex_X_Y(t_all *all, int i);
+int		zoom(int key, int x, int y, t_all *all);
 
 #endif

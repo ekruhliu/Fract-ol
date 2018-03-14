@@ -12,15 +12,15 @@
 
 NAME = fractol
 
-FLAGS = -c #-Wall -Wextra -Werror
+FLAGS = -c -Wall -Wextra -Werror
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = fract.h
 
-SRCS = fractal_mandelbrot.c fractal_burnship.c klavochka.c main.c
+SRCS = zoom.c mouse.c depth.c usage.c fractals.c fractals_part_1.c klavochka.c main.c
 
-OBJ = fractal_mandelbrot.o fractal_burnship.o klavochka.o main.o
+OBJ = zoom.o mouse.o depth.o usage.o fractals.o fractals_part_1.o klavochka.o main.o
 
 all: $(NAME)
 
