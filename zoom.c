@@ -17,8 +17,8 @@ static void	complex_mouse_Y(t_all *all, int y)
 	double	range_Y;
 
 	range_Y = 0;
-	range_Y = (all->complex->max_false - all->complex->min_false) / VISOTA;
-	all->complex_mouse_Y = y * range_Y + all->complex->min_false;
+	range_Y = (MAX_FALSE - MIN_FALSE) / VISOTA;
+	all->complex_mouse_Y = y * range_Y + MIN_FALSE;
 }
 
 static void	complex_mouse_X(t_all *all, int x)
@@ -26,8 +26,8 @@ static void	complex_mouse_X(t_all *all, int x)
 	double	range_X;
 
 	range_X = 0;
-	range_X = (all->complex->max_real - all->complex->min_real) / WIRINA;
-	all->complex_mouse_X = x * range_X + all->complex->min_real;
+	range_X = (MAX_REAL - MIN_REAL) / WIRINA;
+	all->complex_mouse_X = x * range_X + MIN_REAL;
 }
 
 static void	zoom_plus(t_all *all, int x, int y)
@@ -37,15 +37,11 @@ static void	zoom_plus(t_all *all, int x, int y)
 	i = 0;
 	complex_mouse_X(all, x);
 	complex_mouse_Y(all, y);
-	all->complex->max_real = all->complex->max_real * 1.1 + all->complex_mouse_X * (1 - 1.1);
-	all->complex->min_real = all->complex->min_real * 1.1 + all->complex_mouse_X * (1 - 1.1);
-	all->complex->max_false = all->complex->max_false * 1.1 + all->complex_mouse_Y * (1 - 1.1);
-	all->complex->min_false = all->complex->min_false * 1.1 + all->complex_mouse_Y * (1 - 1.1);
-	while (i < PIXELS)
-	{
-		make_complex_X_Y(all, i);
-		i++;
-	}
+	MAX_REAL = MAX_REAL * 1.1 + all->complex_mouse_X * (1 - 1.1);
+	MIN_REAL = MIN_REAL * 1.1 + all->complex_mouse_X * (1 - 1.1);
+	MAX_FALSE = MAX_FALSE * 1.1 + all->complex_mouse_Y * (1 - 1.1);
+	MIN_FALSE = MIN_FALSE * 1.1 + all->complex_mouse_Y * (1 - 1.1);
+	potoki_3(all);
 	magik(all);
 }
 
@@ -56,15 +52,11 @@ static void	zoom_minus(t_all *all, int x, int y)
 	i = 0;
 	complex_mouse_X(all, x);
 	complex_mouse_Y(all, y);
-	all->complex->max_real = all->complex->max_real * 0.9 + all->complex_mouse_X * (1 - 0.9);
-	all->complex->min_real = all->complex->min_real * 0.9 + all->complex_mouse_X * (1 - 0.9);
-	all->complex->max_false = all->complex->max_false * 0.9 + all->complex_mouse_Y * (1 - 0.9);
-	all->complex->min_false = all->complex->min_false * 0.9 + all->complex_mouse_Y * (1 - 0.9);
-	while (i < PIXELS)
-	{
-		make_complex_X_Y(all, i);
-		i++;
-	}
+	MAX_REAL = MAX_REAL * 0.9 + all->complex_mouse_X * (1 - 0.9);
+	MIN_REAL = MIN_REAL * 0.9 + all->complex_mouse_X * (1 - 0.9);
+	MAX_FALSE = MAX_FALSE * 0.9 + all->complex_mouse_Y * (1 - 0.9);
+	MIN_FALSE = MIN_FALSE * 0.9 + all->complex_mouse_Y * (1 - 0.9);
+	potoki_3(all);
 	magik(all);
 }
 

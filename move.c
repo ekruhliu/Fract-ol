@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fract.h"
+#include "fract.h"
 
 // void	move_up(t_all *all)
 // {
 // 	// all->complex->max_real = all->complex->max_real + 0.1;
 // 	// all->complex->min_real = all->complex->min_real + 0.1;
-// 	all->complex->max_false = all->complex->max_false + 0.1;
-// 	all->complex->min_false = all->complex->max_false + 0.1;
+// 	all->complex->max_false = all->complex->max_false + 10;
+// 	all->complex->min_false = all->complex->max_false + 10;
 // 	magik(all);
 // }
 
@@ -25,8 +25,8 @@
 // {
 // 	// all->complex->max_real = 0.5;
 // 	// all->complex->min_real = -2.0;
-// 	all->complex->max_false = all->complex->max_false - 0.1;
-// 	all->complex->min_false = all->complex->min_false - 0.1;
+// 	all->complex->max_false = all->complex->max_false - 10;
+// 	all->complex->min_false = all->complex->min_false - 10;
 // 	magik(all);
 // }
 

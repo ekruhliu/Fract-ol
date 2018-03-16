@@ -18,13 +18,19 @@
 # include <stdio.h>
 # include <pthread.h>
 
-# define VISOTA 1000
-# define WIRINA 1000
-# define PIXELS 1000000
-# define MAX_REAL
-# define MIN_REAL
-# define MAX_FALSE
-# define MIN_FALSE
+# define VISOTA 800
+# define WIRINA 800
+# define PIXELS 640000
+# define RSTRT "Restart: R"
+# define ON_CLR "On Color: C"
+# define DPTH "Depth plus: '+' |***| Depth minus: '-'"
+# define CLR "Change color: PgUp || PgDn"
+# define UP_DWN "Move UP: ArrowUp |***| Move DOWN: ArrowDown"
+# define LFT_RGHT "Move LEFT: ArrowLeft |***| Move RIGHT: ArrorRight"
+# define MAX_REAL all->complex->max_real
+# define MIN_REAL all->complex->min_real
+# define MAX_FALSE all->complex->max_false
+# define MIN_FALSE all->complex->min_false
 # define DATA_ADDR_1 all->img->image, &all->img->bits
 # define DATA_ADDR_2 &all->img->size_line, &all->img->end
 # define STANDART_INPUT 0
@@ -65,13 +71,20 @@ typedef	struct	s_all
 	int			color;
 	int 		ret_depth;
 	int			w_t_f;
+	int			help;
+	int			color_on;
 	double		true_julia;
 	double		false_julia;
 	double		complex_mouse_X;
 	double		complex_mouse_Y;
+	// double		tmp_true_julia;
+	// double		tmp_false_julia;
+	// double		tmp_complex_mouse_X;
+	// double		tmp_complex_mouse_Y;
 	t_complex	*complex;
 	t_complex_2	*complex_2;
 	t_img		*img;
+	// t_complex_2	*tmp;
 }				t_all;
 
 int		fractal_mandelbrot(t_all *all, int i);
@@ -101,8 +114,18 @@ void	ft_color_fill(t_all *all, int color, int i);
 void	create_image(t_all *all);
 void	create_lines(t_all *all, int i);
 int		fractal_test(t_all *all, int i);
-// void	move_up(t_all *all);
-// void	move_down(t_all *all);
+void	potoki(t_all *all);
+void	potoki_2(t_all *all);
+void	potoki_3(t_all *all);
+void	*make_comlpex_X_Y_part_1(void *op);
+void	*make_comlpex_X_Y_part_2(void *op);
+void	*make_comlpex_X_Y_part_3(void *op);
+void	*make_comlpex_X_Y_part_4(void *op);
+void	color_plus(t_all *all);
+void	color_minus(t_all *all);
+void	move_up(t_all *all);
+void	move_down(t_all *all);
+void	help(t_all *all);
 // void	move_left(t_all *all);
 // void	move_right(t_all *all);
 

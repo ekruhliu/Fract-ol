@@ -17,8 +17,8 @@ static void	false_julia(t_all *all, int y)
 	double	range_Y;
 
 	range_Y = 0;
-	range_Y = (all->complex->max_false - all->complex->min_false) / VISOTA;
-	all->false_julia = y * range_Y + all->complex->min_false;
+	range_Y = (MAX_FALSE - MIN_FALSE) / VISOTA;
+	all->false_julia = y * range_Y + MIN_FALSE;
 }
 
 static void	true_julia(t_all *all, int x)
@@ -26,8 +26,8 @@ static void	true_julia(t_all *all, int x)
 	double	range_X;
 
 	range_X = 0;
-	range_X = (all->complex->max_real - all->complex->min_real) / WIRINA;
-	all->true_julia = x * range_X + all->complex->min_real;
+	range_X = (MAX_REAL - MIN_REAL) / WIRINA;
+	all->true_julia = x * range_X + MIN_REAL;
 }
 
 

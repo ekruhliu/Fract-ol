@@ -25,33 +25,21 @@ void	open_window(t_all *all)
 
 void	make_complex_R_F(t_all *all)
 {
+	all->complex = malloc(sizeof(t_complex));
 	if (all->w_t_f == 1)
 	{
-		all->complex->max_real = 0.5;
-		all->complex->min_real = -2.0;
-		all->complex->max_false = 1.25;
-		all->complex->min_false = -1.25;
+		MAX_REAL = 0.5;
+		MIN_REAL = -2.0;
+		MAX_FALSE = 1.25;
+		MIN_FALSE = -1.25;
 	}
 	else
 	{
-		all->complex->max_real = 2;
-		all->complex->min_real = -2.0;
-		all->complex->max_false = 2;
-		all->complex->min_false = -2.0;
+		MAX_REAL = 2;
+		MIN_REAL = -2.0;
+		MAX_FALSE = 2;
+		MIN_FALSE = -2.0;
 	}
-}
-
-void	make_complex_X_Y(t_all *all, int i)
-{
-	double	range_X;
-	double	range_Y;
-
-	range_X = 0;
-	range_Y = 0;
-	range_Y = (all->complex->max_false - all->complex->min_false) / VISOTA;
-	all->complex_2[i].complex_Y = all->complex_2[i].y * range_Y + all->complex->min_false;
-	range_X = (all->complex->max_real - all->complex->min_real) / WIRINA;
-	all->complex_2[i].complex_X = all->complex_2[i].x * range_X + all->complex->min_real;
 }
 
 void	make_coordinate(t_all *all)
@@ -62,6 +50,7 @@ void	make_coordinate(t_all *all)
 
 	y = 0;
 	i = 0;
+	all->complex_2 = malloc(sizeof(t_complex_2) * PIXELS);
 	while (y < VISOTA)
 	{
 		x = 0;
@@ -100,30 +89,12 @@ void	create_image(t_all *all)
 	all->img->line = mlx_get_data_addr(DATA_ADDR_1, DATA_ADDR_2);
 }
 
-void		create_lines(t_all *all, int i)
-{
-	int		x;
-
-	if ((int)all->complex_2[i].y >= 0 && (int)all->complex_2[i].x >= 0)
-	{
-		if ((int)all->complex_2[i].y < VISOTA && (int)all->complex_2[i].x < WIRINA)
-		{
-			x = (int)all->complex_2[i].y * all->img->size_line + (int)all->complex_2[i].x * 4;
-			if (x < VISOTA * WIRINA * 4)
-			{
-				all->img->line[x] = all->complex_2[i].blue;
-				all->img->line[x + 1] = all->complex_2[i].green;
-				all->img->line[x + 2] = all->complex_2[i].red;
-			}
-		}
-	}
-}
-
 void	cleaner(t_all *all)
 {
 	free(all->complex);
 	free(all->complex_2);
 	free(all->img);
+	// free(all->tmp);
 	free(all);
 }
 
@@ -158,8 +129,6 @@ int	main(int argc, char **argv)
 		all = malloc(sizeof(t_all));
 		//read_SI(all);
 		all->w_t_f = ft_atoi(argv[1]);
-		all->complex = malloc(sizeof(t_complex));
-		all->complex_2 = malloc(sizeof(t_complex_2) * PIXELS);
 		make_coordinate(all);
 		make_complex_R_F(all);
 		while (i < PIXELS)
@@ -167,9 +136,15 @@ int	main(int argc, char **argv)
 			make_complex_X_Y(all, i);
 			i++;
 		}
+		potoki_3(all);
+		all->help = 0;
 		all->depth = 50;
-		all->color = 0x0FF0F0; //0xFFF0F0
+		all->color = 0xf0f0f0; //0xFFF0F0
+		all->color_on = 0;
 		open_window(all);
+		// all->tmp = all->complex_2;//malloc(sizeof(t_complex_2) * PIXELS);
+		// all->tmp_complex_mouse_X = all->complex_mouse_X;
+		// all->tmp_complex_mouse_Y = all->complex_mouse_Y;
 		magik(all);
 		mlx_hook(all->win, 6, 0, mouse, all);
 		mlx_mouse_hook(all->win, zoom, all);
