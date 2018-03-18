@@ -14,12 +14,18 @@
 
 void	color_plus(t_all *all)
 {
-	all->color += 1;
+	if (all->color < 0x7FFFFFFF)
+		all->color += 1;
+	else
+		all->color = 1;
 	magik(all);
 }
 
 void	color_minus(t_all *all)
 {
-	all->color -= 1;
+	if (all->color > 0)
+		all->color -= 1;
+	else
+		all->color = 0x7FFFFFFF;
 	magik(all);
 }

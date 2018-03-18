@@ -84,7 +84,6 @@ typedef	struct	s_all
 	t_complex	*complex;
 	t_complex_2	*complex_2;
 	t_img		*img;
-	// t_complex_2	*tmp;
 }				t_all;
 
 int		fractal_mandelbrot(t_all *all, int i);
@@ -96,6 +95,7 @@ int		mouse(int x, int y, t_all *all);
 int		exit_x(void);
 void	magik(t_all *all);
 void	usage(void);
+void	make_complex_R_F(t_all *all);
 void	depth_plus(t_all *all);
 void	depth_minus(t_all *all);
 void	make_complex_X_Y(t_all *all, int i);
@@ -113,7 +113,13 @@ void	*lines_part_4(void *op);
 void	ft_color_fill(t_all *all, int color, int i);
 void	create_image(t_all *all);
 void	create_lines(t_all *all, int i);
-int		fractal_test(t_all *all, int i);
+int		fractal_mandelbrot_4th(t_all *all, int i);
+int		fractal_celtic_mandelbrot(t_all *all, int i);
+int		fractal_verticat_mandelbrot_5th(t_all *all, int i);
+int		fractal_burnship_5th(t_all *all, int i);
+int		fractal_cubic_burnship(t_all *all, int i);
+int		fractal_imag_quasi_perpendicular(t_all *all, int i);
+int		fractal_celtic_5th_mbal(t_all *all, int i);
 void	potoki(t_all *all);
 void	potoki_2(t_all *all);
 void	potoki_3(t_all *all);
@@ -126,7 +132,11 @@ void	color_minus(t_all *all);
 void	move_up(t_all *all);
 void	move_down(t_all *all);
 void	help(t_all *all);
-// void	move_left(t_all *all);
-// void	move_right(t_all *all);
+void	move_left(t_all *all);
+void	move_right(t_all *all);
+void	dgnl_move_u_l(t_all *all);
+void	dgnl_move_u_r(t_all *all);
+void	dgnl_move_d_l(t_all *all);
+void	dgnl_move_d_r(t_all *all);
 
 #endif

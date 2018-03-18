@@ -67,20 +67,33 @@ int		klavochka(int key, t_all *all)
 		exit_x();
 	if (key == 69 || key == 78)
 		(key == 69 ? depth_plus(all) : depth_minus(all));
-	if (key == 8)
-		(key == 8 && all->color_on == 0 ? color_on(all) : color_off(all));
+	if (key == 1)
+		(key == 1 && all->color_on == 0 ? color_on(all) : color_off(all));
 	// if (key == 15)
-	// 	restart(all);
-	if (key == 116 || key == 121)
-		(key == 116 ? color_plus(all) : color_minus(all));
+		// restart(all);
+	if ((key == 116 || key == 24) || (key == 121 || key == 27))
+		(key == 116 || key == 24 ? color_plus(all) : color_minus(all));
 	if (key == 4)
 	{
 		all->help = (all->help == 0 ? 1 : 0);
 		magik(all);
 	}
-	// if (key == 126 || key == 125)
-	// 	(key == 126 ? move_up(all) : move_down(all));
-	// if (key == 123 || key == 124)
-	// 	(key == 123 ? move_left(all) : move_right(all));
+	if ((key == 3 || key == 5) && (all->w_t_f > 0 && all->w_t_f <= 10)) // need anorher keys
+	{
+		if (key == 5 && all->w_t_f < 10)
+			all->w_t_f += 1;
+		if (key == 3 && all->w_t_f > 1)
+			all->w_t_f -= 1;
+		make_complex_R_F(all);
+		magik(all);
+	}
+	if (key == 13 || key == 7)
+		(key == 13 ? move_up(all) : move_down(all));
+	if (key == 0 || key == 2)
+		(key == 0 ? move_left(all) : move_right(all));
+	if (key == 12 || key == 14)
+		(key == 12 ? dgnl_move_u_l(all) : dgnl_move_u_r(all));
+	if (key == 6 || key == 8)
+		(key == 6 ? dgnl_move_d_l(all) : dgnl_move_d_r(all));
 	return (0);
 }
