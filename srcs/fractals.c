@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
 int	fractals(t_all *all, int i)
 {
@@ -37,5 +37,5 @@ int	fractals(t_all *all, int i)
 		result = fractal_imag_quasi_perpendicular(all, i);
 	if (all->w_t_f == 10)
 		result = fractal_celtic_5th_mbal(all, i);
-	return(result);
+	return (result);
 }

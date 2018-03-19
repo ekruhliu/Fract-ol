@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   usage.c                                            :+:      :+:    :+:   */
+/*   usage_and_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekruhliu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
 void	usage(void)
 {
-	ft_putstr("usage: ./fractol [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] \n");
+	ft_putstr("\033[1;31musage: ./fractol [ NUMBER OF FRACRAL ]\n\e[m");
+}
+
+void	error(void)
+{
+	ft_putstr("\033[1;31mERROR!!! Invalid fractal number!\n\e[m");
+	exit(1);
 }

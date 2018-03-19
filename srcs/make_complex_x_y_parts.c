@@ -1,92 +1,86 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lines_parts.c                                      :+:      :+:    :+:   */
+/*   make_complex_x_y_parts.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekruhliu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/16 09:14:48 by ekruhliu          #+#    #+#             */
-/*   Updated: 2018/03/16 09:14:49 by ekruhliu         ###   ########.fr       */
+/*   Created: 2018/03/16 09:31:27 by ekruhliu          #+#    #+#             */
+/*   Updated: 2018/03/16 09:31:28 by ekruhliu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
-void	*lines_part_1(void *op)
+void		*make_comlpex_x_y_part_1(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 0;
 	while (i < 160000)
 	{
-		create_lines(all, i);
+		make_complex_x_y(all, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void	*lines_part_2(void *op)
+void		*make_comlpex_x_y_part_2(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 160000;
 	while (i < 320000)
 	{
-		create_lines(all, i);
+		make_complex_x_y(all, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void	*lines_part_3(void *op)
+void		*make_comlpex_x_y_part_3(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 320000;
 	while (i < 480000)
 	{
-		create_lines(all, i);
+		make_complex_x_y(all, i);
 		i++;
-	}	
+	}
 	pthread_exit(0);
 }
 
-void	*lines_part_4(void *op)
+void		*make_comlpex_x_y_part_4(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 480000;
 	while (i < 640000)
 	{
-		create_lines(all, i);
+		make_complex_x_y(all, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void		create_lines(t_all *all, int i)
+void		make_complex_x_y(t_all *all, int i)
 {
-	int		x;
+	double	range_x;
+	double	range_y;
 
-	if ((int)all->complex_2[i].y >= 0 && (int)all->complex_2[i].x >= 0)
-	{
-		if ((int)all->complex_2[i].y < VISOTA && (int)all->complex_2[i].x < WIRINA)
-		{
-			x = (int)all->complex_2[i].y * all->img->size_line + (int)all->complex_2[i].x * 4;
-			if (x < VISOTA * WIRINA * 4)
-			{
-				all->img->line[x] = all->complex_2[i].blue;
-				all->img->line[x + 1] = all->complex_2[i].green;
-				all->img->line[x + 2] = all->complex_2[i].red;
-			}
-		}
-	}
+	range_x = 0;
+	range_y = 0;
+	range_y = (MAX_FALSE - MIN_FALSE) / VISOTA;
+	COMPLEX_Y = Y * range_y + MIN_FALSE;
+	range_x = (MAX_REAL - MIN_REAL) / WIRINA;
+	COMPLEX_X = X * range_x + MIN_REAL;
 }

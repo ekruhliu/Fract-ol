@@ -16,25 +16,31 @@ FLAGS = -c -Wall -Wextra -Werror -O3
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
-HEADER = fract.h
+HEADER = ./includes/fract.h
 
-SRCS = lines_parts.c move.c pth.c magik.c zoom.c mouse.c depth.c usage.c fractals.c fractals_part_1.c \
-klavochka.c depth_parts.c change_colors.c make_complex_X_Y_parts.c main.c
+LIBFT = ./libft/libft.a
 
-OBJ = lines_parts.o move.o pth.o magik.o zoom.o mouse.o depth.o usage.o fractals.o fractals_part_1.o \
-klavochka.o depth_parts.o change_colors.o make_complex_X_Y_parts.o main.o
+SRCS = ./srcs/lines_parts.c ./srcs/move.c ./srcs/magik.c ./srcs/zoom.c ./srcs/mouse.c ./srcs/depth.c ./srcs/usage_and_error.c ./srcs/fractals.c \
+./srcs/fractals_part_1.c ./srcs/klavochka.c ./srcs/fractals_part_2.c ./srcs/depth_parts.c ./srcs/change_colors.c ./srcs/make_complex_X_Y_parts.c \
+./srcs/poroki_1.c ./srcs/poroki_2.c ./srcs/poroki_3.c ./srcs/diagonal_moves.c ./srcs/help.c ./srcs/exit_x.c ./srcs/create_image.c \
+./srcs/make_complex_r_f.c ./srcs/make_coordinate.c ./srcs/open_window.c ./srcs/save_color.c ./srcs/two_fractals.c ./srcs/three_fractals.c \
+./srcs/four_fractals.c ./srcs/main.c
+
+OBJ = lines_parts.o move.o magik.o zoom.o mouse.o depth.o usage_and_error.o fractals.o fractals_part_1.o \
+klavochka.o fractals_part_2.o depth_parts.o change_colors.o make_complex_X_Y_parts.o poroki_1.o \
+poroki_2.o poroki_3.o diagonal_moves.o help.o exit_x.o create_image.o make_complex_r_f.o make_coordinate.o\
+open_window.o save_color.o two_fractals.o three_fractals.o four_fractals.o main.o
 
 all: $(NAME)
 
 $(NAME):
 		@ make -C libft/
 		@ @ gcc $(FLAGS) $(HEADER) $(SRCS)
-		@ @ gcc -o $(NAME) $(OBJ) libft/libft.a $(MLX)
-		@# gcc -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit -O3 $(SRCS) libft/libft.a
-		@ sh inf.sh
+		@ @ gcc -o $(NAME) $(OBJ) $(LIBFT) $(MLX)
+		@ sh ./script/inf.sh
 
 clean:
-		@ /bin/rm -f $(OBJ) ./fract.h.gch
+		@ /bin/rm -f $(OBJ) ./includes/fract.h.gch
 		@ make -C libft/ clean
 
 fclean: clean

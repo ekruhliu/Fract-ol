@@ -10,82 +10,82 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
-void	*depth_part_1(void *op)
+void		*depth_part_1(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 0;
 	while (i < 160000)
 	{
-		all->ret_depth = fractals(all, i);
-		if (all->ret_depth < all->depth)
-			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
+		RET_DEPTH = fractals(all, i);
+		if (RET_DEPTH < DEPTH)
+			save_color(all, (((RET_DEPTH + 1) % (i + 1)) * all->color), i);
 		else
-			ft_color_fill(all, 0, i);
+			save_color(all, 0, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void	*depth_part_2(void *op)
+void		*depth_part_2(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 160000;
-	all->ret_depth = all->ret_depth;
+	RET_DEPTH = RET_DEPTH;
 	while (i < 320000)
 	{
-		all->ret_depth = fractals(all, i);
-		if (all->ret_depth < all->depth) 
-			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
+		RET_DEPTH = fractals(all, i);
+		if (RET_DEPTH < DEPTH)
+			save_color(all, (((RET_DEPTH + 1) % (i + 1)) * all->color), i);
 		else
-			ft_color_fill(all, 0, i);
+			save_color(all, 0, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void	*depth_part_3(void *op)
+void		*depth_part_3(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 320000;
-	all->ret_depth = all->ret_depth;
+	RET_DEPTH = RET_DEPTH;
 	while (i < 480000)
 	{
-		all->ret_depth = fractals(all, i);
-		if (all->ret_depth < all->depth) 
-			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
+		RET_DEPTH = fractals(all, i);
+		if (RET_DEPTH < DEPTH)
+			save_color(all, (((RET_DEPTH + 1) % (i + 1)) * all->color), i);
 		else
-			ft_color_fill(all, 0, i);
+			save_color(all, 0, i);
 		i++;
 	}
 	pthread_exit(0);
 }
 
-void	*depth_part_4(void *op)
+void		*depth_part_4(void *op)
 {
-	int i;
+	int		i;
 	t_all	*all;
 
 	all = (t_all*)op;
 	i = 480000;
-	all->ret_depth = all->ret_depth;
+	RET_DEPTH = RET_DEPTH;
 	while (i < 640000)
 	{
-		all->ret_depth = fractals(all, i);
-		if (all->ret_depth < all->depth) 
-			ft_color_fill(all, (((all->ret_depth + 1) % (i + 1)) * all->color), i);
+		RET_DEPTH = fractals(all, i);
+		if (RET_DEPTH < DEPTH)
+			save_color(all, (((RET_DEPTH + 1) % (i + 1)) * all->color), i);
 		else
-			ft_color_fill(all, 0, i);
+			save_color(all, 0, i);
 		i++;
 	}
 	pthread_exit(0);

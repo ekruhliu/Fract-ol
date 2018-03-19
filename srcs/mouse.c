@@ -10,34 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
-static void	false_julia(t_all *all, int y)
+static	void	false_julia(t_all *all, int y)
 {
-	double	range_Y;
+	double	range_y;
 
-	range_Y = 0;
-	range_Y = (MAX_FALSE - MIN_FALSE) / VISOTA;
-	all->false_julia = y * range_Y + MIN_FALSE;
+	range_y = (MAX_FALSE - MIN_FALSE) / VISOTA;
+	all->false_julia = y * range_y + MIN_FALSE;
 }
 
-static void	true_julia(t_all *all, int x)
+static	void	real_julia(t_all *all, int x)
 {
-	double	range_X;
+	double	range_x;
 
-	range_X = 0;
-	range_X = (MAX_REAL - MIN_REAL) / WIRINA;
-	all->true_julia = x * range_X + MIN_REAL;
+	range_x = (MAX_REAL - MIN_REAL) / WIRINA;
+	all->real_julia = x * range_x + MIN_REAL;
 }
 
-
-int	mouse(int x, int y, t_all *all)
+int				mouse(int x, int y, t_all *all)
 {
 	if (all->w_t_f == 2)
 	{
-		true_julia(all, x);
+		real_julia(all, x);
 		false_julia(all, y);
 		magik(all);
 	}
-	return(0);
+	return (0);
 }

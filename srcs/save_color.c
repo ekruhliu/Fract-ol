@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   depth.c                                            :+:      :+:    :+:   */
+/*   save_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekruhliu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 15:37:04 by ekruhliu          #+#    #+#             */
-/*   Updated: 2018/03/14 15:37:05 by ekruhliu         ###   ########.fr       */
+/*   Created: 2018/03/19 12:17:13 by ekruhliu          #+#    #+#             */
+/*   Updated: 2018/03/19 12:17:13 by ekruhliu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "../includes/fract.h"
 
-void	depth_plus(t_all *all)
+void	save_color(t_all *all, int color, int i)
 {
-	all->depth += 1;
-	magik(all);
-}
+	int		red;
+	int		green;
+	int		blue;
 
-void	depth_minus(t_all *all)
-{
-	all->depth -= 1;
-	magik(all);
+	red = (color >> 16);
+	green = (color >> 8) - (red << 8);
+	blue = (color) - (red << 16) - (green << 8);
+	all->complex_2[i].red = red;
+	all->complex_2[i].green = green;
+	all->complex_2[i].blue = blue;
 }
