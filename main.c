@@ -193,7 +193,7 @@ int	main(int argc, char **argv)
 			make_complex_R_F(all);
 			all->help = 0;
 			all->depth = 50;
-			all->color = 0xf0f0f0; //0xFFF0F0 0x7FFFFFFE
+			all->color = 0xf0f0f0; //0xFFF0F0 0x7FFFFFFE //358
 			all->color_on = 0;
 			// all->tmp = all;
 			open_window(all);

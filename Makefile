@@ -28,21 +28,10 @@ all: $(NAME)
 
 $(NAME):
 		@ make -C libft/
-		@# @ gcc $(FLAGS) $(HEADER) $(SRCS)
-		@# @ gcc -o $(NAME) $(OBJ) libft/libft.a $(MLX)
-		@ gcc -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit -O3 $(SRCS) libft/libft.a
-		@ echo "${WHITE}LIST OF FRACTOLS${NORMAL}"
-		@ echo "1: Mandelbrot"
-		@ echo "2: Julia"
-		@ echo "3: Burnship"
-		@ echo "4: Mandelbrot 4th Order"
-		@ echo "5: Celtic Mandelbrot"
-		@ echo "6: Verticat Mandelbrot 5th Order"
-		@ echo "7: Burnship 5th Order"
-		@ echo "8: Cubic Burnship"
-		@ echo "9: Imag Quasi Perpendicular"
-		@ echo "10: Celtic 5th Order Mbal"
-		@ echo "${WHITE}Select from 1 to 4${NORMAL}"
+		@ @ gcc $(FLAGS) $(HEADER) $(SRCS)
+		@ @ gcc -o $(NAME) $(OBJ) libft/libft.a $(MLX)
+		@# gcc -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit -O3 $(SRCS) libft/libft.a
+		@ sh inf.sh
 
 clean:
 		@ /bin/rm -f $(OBJ) ./fract.h.gch

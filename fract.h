@@ -21,12 +21,18 @@
 # define VISOTA 800
 # define WIRINA 800
 # define PIXELS 640000
+# define R key == 83 || key == 18
+# define G key == 84 || key == 19
+# define B key == 85 || key == 20
 # define RSTRT "Restart: R"
-# define ON_CLR "On Color: C"
+# define ON_CLR "On Colors: Red: 1 |***| Green: 2 |***| Blue: 3 |***| Psychedelic: S"
 # define DPTH "Depth plus: '+' |***| Depth minus: '-'"
 # define CLR "Change color: PgUp || PgDn"
-# define UP_DWN "Move UP: ArrowUp |***| Move DOWN: ArrowDown"
-# define LFT_RGHT "Move LEFT: ArrowLeft |***| Move RIGHT: ArrorRight"
+# define CH_FRCT "Change Fracals: < || >"
+# define UP_DWN "Move UP: ArrowUp || W |***| Move DOWN: ArrowDown || X"
+# define LFT_RGHT "Move LEFT: ArrowLeft || A |***| Move RIGHT: ArrorRight || D"
+# define DGNL_MV_UP "Move UpLeft: Q |***| Move UpRight: E"
+# define DGNL_MV_DN "Move DownLeft: Z |***| Move DownRight: C"
 # define MAX_REAL all->complex->max_real
 # define MIN_REAL all->complex->min_real
 # define MAX_FALSE all->complex->max_false

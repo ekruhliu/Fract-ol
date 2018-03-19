@@ -15,7 +15,10 @@
 void	color_plus(t_all *all)
 {
 	if (all->color < 0x7FFFFFFF)
+	{
 		all->color += 1;
+		printf("COLOR = %d\n", all->color);
+	}
 	else
 		all->color = 1;
 	magik(all);
