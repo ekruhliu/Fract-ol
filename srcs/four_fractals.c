@@ -12,44 +12,43 @@
 
 #include "../includes/fract.h"
 
-static	void	part_1(char *ar_1, char *str, char *tmp)
+static	void	part_1(char *ar_1, char **str)
 {
-	str = ft_strjoin(str, ar_1);
-	tmp = str;
-	str = ft_strjoin(tmp, " & ");
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, "./fractol ");
-	free(tmp);
+	char	*new;
+	
+	new = ft_strjoin(*str, ar_1);
+	free(*str);
+	*str = new;
+	new = ft_strjoin(*str, " & ./fractol ");
+	free(*str);
+	*str = new;
 }
 
-static	void	part_2(char *ar_2, char *ar_3, char *str, char *tmp)
+static	void	part_2(char *ar_2, char *ar_3, char **str)
 {
-	tmp = str;
-	str = ft_strjoin(tmp, ar_2);
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, " & ");
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, "./fractol ");
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, ar_3);
-	free(tmp);
+	char	*new;
+	
+	new = ft_strjoin(*str, ar_2);
+	free(*str);
+	*str = new;
+	new = ft_strjoin(*str, " & ./fractol ");
+	free(*str);
+	*str = new;
+	new = ft_strjoin(*str, ar_3);
+	free(*str);
+	*str = new;
 }
 
-static	void	part_3(char *ar_4, char *str, char *tmp)
+static	void	part_3(char *ar_4, char **str)
 {
-	tmp = str;
-	str = ft_strjoin(tmp, " & ");
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, "./fractol ");
-	free(tmp);
-	tmp = str;
-	str = ft_strjoin(tmp, ar_4);
-	free(tmp);
+	char	*new;
+	
+	new = ft_strjoin(*str, " & ./fractol ");
+	free(*str);
+	*str = new;
+	new = ft_strjoin(*str, ar_4);
+	free(*str);
+	*str = new;
 }
 
 void			four_fractals(char *ar_1, char *ar_2, char *ar_3, char *ar_4)
@@ -57,12 +56,12 @@ void			four_fractals(char *ar_1, char *ar_2, char *ar_3, char *ar_4)
 	char		*str;
 	char		*tmp;
 
-	tmp = NULL;
-	str = malloc(sizeof(char) * 10);
-	str = "./fractol ";
-	part_1(ar_1, str, tmp);
-	part_2(ar_2, ar_3, str, tmp);
-	part_3(ar_4, str, tmp);
+	tmp = ft_strnew(0);
+	str = ft_strjoin(tmp, "./fractol ");
+	free(tmp);
+	part_1(ar_1, &str);
+	part_2(ar_2, ar_3, &str);
+	part_3(ar_4, &str);
 	system(str);
 	free(str);
 }

@@ -17,15 +17,13 @@ void	two_fractals(char *argv_1, char *argv_2)
 	char		*str;
 	char		*tmp;
 
-	tmp = NULL;
-	str = malloc(sizeof(char) * 10);
-	str = "./fractol ";
-	str = ft_strjoin(str, argv_1);
-	tmp = str;
-	str = ft_strjoin(tmp, " & ");
-	free(tmp);
-	tmp = str;
+	tmp = ft_strnew(0);
 	str = ft_strjoin(tmp, "./fractol ");
+	free(tmp);
+	tmp = ft_strjoin(str, argv_1);
+	free(str);
+	str = tmp;
+	str = ft_strjoin(tmp, " & ./fractol ");
 	free(tmp);
 	tmp = str;
 	str = ft_strjoin(tmp, argv_2);
