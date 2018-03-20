@@ -15,7 +15,7 @@
 static	void	part_1(char *ar_1, char **str)
 {
 	char	*new;
-	
+
 	new = ft_strjoin(*str, ar_1);
 	free(*str);
 	*str = new;
@@ -27,7 +27,7 @@ static	void	part_1(char *ar_1, char **str)
 static	void	part_2(char *ar_2, char *ar_3, char **str)
 {
 	char	*new;
-	
+
 	new = ft_strjoin(*str, ar_2);
 	free(*str);
 	*str = new;
@@ -42,7 +42,7 @@ static	void	part_2(char *ar_2, char *ar_3, char **str)
 static	void	part_3(char *ar_4, char **str)
 {
 	char	*new;
-	
+
 	new = ft_strjoin(*str, " & ./fractol ");
 	free(*str);
 	*str = new;

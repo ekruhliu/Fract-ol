@@ -15,7 +15,7 @@
 static	void	part_1(char *argv_1, char **str)
 {
 	char	*new;
-	
+
 	new = ft_strjoin(*str, argv_1);
 	free(*str);
 	*str = new;
@@ -27,7 +27,7 @@ static	void	part_1(char *argv_1, char **str)
 static	void	part_2(char *argv_2, char *argv_3, char **str)
 {
 	char	*new;
-	
+
 	new = ft_strjoin(*str, argv_2);
 	free(*str);
 	*str = new;
